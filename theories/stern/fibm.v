@@ -4052,7 +4052,7 @@ Proof.
 move: (fib_ge2_alt n); set p :=  (fib n.+3).-2 => pv.
 have la: (fib n.+2).-1 <= p by rewrite - 2!ltnS -pv -fib_pos fib_smonotone_bis.
 have lb: p <= (fib n.+3).-1 by rewrite pv /=.
-rewrite card_max_repE (big_cat_nat _ _ _ la lb) pv /= big_hasC.
+rewrite card_max_repE (@big_cat_nat _ _ _ _ _ _ _ _ la lb) pv /= big_hasC.  (* FIXME: replace with (big_cat_nat la lb) when requiring MC >= 2.4.0 *)
   by rewrite big_ltn_cond // /p ZeckM_fibm2 size_rev size_iota eqxx big_geq.
 apply/hasPn => i; rewrite mem_index_iota /p.
 case:(posnP n)=> [ | /prednK nv]; first by move ->; rewrite ltn0 andbF.
@@ -4081,7 +4081,7 @@ have kl2: k <= (fib n.+3).-1.
   by rewrite - ltnS /k -addnS -!fib_pos fibSS leq_add2r fib_monotone.
 have np:=(ltn_predK lmn).
 have n3: n = (n-3).+3 by rewrite - addn3 subnK // (leq_trans _ lmn).
-rewrite addnC !card_max_repE (big_cat_nat _ _ _ kl1 kl2) /=; congr addn. 
+rewrite addnC !card_max_repE (@big_cat_nat _ _ _ _ _ _ _ _ kl1 kl2) /=; congr addn.  (* FIXME: replace with (big_cat_nat kl1 kl2) when requiring MC >= 2.4.0 *)
    rewrite fibSS /k -[in fib n] np (fib_pos n.-1) addnS /= np big_nat_shift.
    apply:big_nat_cond_eq => i eq1.
    by rewrite n3 in eq1; move:(ZeckM_rec2 eq1); rewrite -n3 addnC => ->.
@@ -4147,7 +4147,7 @@ case: (posnP n) => np.
 set k := fib n.+2 + fib n.
 have kl1: (fib n.+2) <= k by rewrite leq_addr.
 have kl2: k <= (fib n.+3) by rewrite  fibSS /k leq_add2l fib_monotone.
-rewrite {1} card_min_repE (big_cat_nat _ _ _ kl1 kl2) /=; congr addn. 
+rewrite {1} card_min_repE (@big_cat_nat _ _ _ _ _ _ _ _ kl1 kl2) /=; congr addn.  (* FIXME: replace with (big_cat_nat kl1 kl2) when requiring MC >= 2.4.0 *)
   rewrite /k {1} fibSS !(addnC _ (fib n)) big_nat_shift card_min_repE.
   apply:big_nat_cond_eq => i eq1.
   move/andP:(eq1) => [ha]; rewrite fibSS => hb.

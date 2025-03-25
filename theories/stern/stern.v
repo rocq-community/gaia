@@ -2726,7 +2726,7 @@ rewrite - (big_mkord xpredT (fun i => Stern (i + 2 ^ n.+1).*2)).
 transitivity (p%:Q); last by rewrite expnS ratN_M mulrC mulKf //.
 have ha: (0 <= 2^n)%N by [].
 have hb: (2^n <= 2^n.+1)%N by rewrite leq_exp2l.
-rewrite(big_cat_nat _ _ _ ha hb) /= [X in _ + X] big_nat_rev /=.
+rewrite(@big_cat_nat _ _ _ _ _ _ _ _ ha hb) /= [X in _ + X] big_nat_rev /=.  (* FIXME: replace with (big_cat_nat ha hb) when requiring MC >= 2.4.0 *)
 rewrite -/p -{2} (add0n p) big_addn expn2S -{2} addnn addnK -big_split /=.
 rewrite big_mkord; transitivity (\sum_(i < p) 1 %:Q);
   last by rewrite sumr_const card_ord //.
@@ -4731,7 +4731,7 @@ have: x = #|[set i:'I_m'.+1 | (2^n <= i) && (b == fusc i) ]|.
   rewrite - (big_mkord _ (fun i => if (b == fusc i) then 1 else 0)).
   have qa: 0 <= 2^n by [].
   have qb: 2^n <= m'.+1 by rewrite mpp /m expn2S double_le1.
-  rewrite (big_cat_nat _ _ _ qa qb) /= big1_seq.
+  rewrite (@big_cat_nat _ _ _ _ _ _ _ _ qa qb) /= big1_seq.  (* FIXME: replace with (big_cat_nat qa qb) when requiring MC >= 2.4.0 *)
     by rewrite add0n big_mkcond /= /x mpp; apply: eq_big_nat => i /andP[->].
   by move => i; rewrite mem_iota add0n subn0 ltnNge => /and3P [->] //.
 move => ->; clear x; apply: eq_card => a; rewrite inE;  apply/idP/imsetP.
