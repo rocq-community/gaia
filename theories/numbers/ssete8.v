@@ -356,7 +356,7 @@ Lemma shorten_sum (f: nat -> R) (n m : nat):
   \sum_(i < m) f i = \sum_(i < n) f i.
 Proof.
 move => nm fz.
-rewrite - (big_mkord xpredT) (big_cat_nat _ _ _ (leq0n n) nm) /= big_mkord.
+rewrite - (big_mkord xpredT) (@big_cat_nat _ _ _ _ _ _ _ _ (leq0n n) nm) /= big_mkord.  (* FIXME: replace with (big_cat_nat (leq0n n) nm) when requiring MC >= 2.4.0 *)
 rewrite  [X in ( _ + X)]big1_seq ? Monoid.mulm1 // => i; case /andP => _.
 by rewrite mem_index_iota; apply: fz.
 Qed.
