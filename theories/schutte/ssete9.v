@@ -206,8 +206,9 @@ Qed.
     
 Lemma f_spec_simp1 f n: (forall n, ~~odd n -> f n = f_spec f n) 
    -> f (n.*2.+2) = n.
-Proof. by move => h; rewrite  f_spec_simp //= ?uphalf_double // odd_double. Qed.
-
+Proof.
+by move=> h; rewrite [LHS]f_spec_simp//= ?uphalf_double// odd_double.
+Qed.
 
 Lemma f_spec_simp2 f n: (forall n,  f n = f_spec f n) ->  f(n.*2.+3) = n.
 Proof. 

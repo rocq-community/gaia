@@ -2141,7 +2141,7 @@ rewrite /DE_eq6; move => [n]; move: (DE_eq6_sol n) => [ea eb ec ed].
 case; move => [-> ->].
 + rewrite addrAC - addrA addrAC addrA hu ea PoszD hu addrK PoszD addrK.
   by rewrite PoszM subrr.  
-+ by rewrite - mulNr opprK sqrrN ! hu -PoszM -PoszD eb subrr.
++ by rewrite -mulNr opprK sqrrN !hu -PoszM -[X in X - _]PoszD eb subrr.
 + by rewrite sqrrN -mulrN opprK ! hu -PoszM -PoszD ec addnC PoszD addrK subrr.
 + rewrite !sqrrN mulrN !opprK mulNr - addrA addrACA - opprD !hu.
   by rewrite - PoszM -PoszD ed -PoszD subrr.
