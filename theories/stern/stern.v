@@ -979,7 +979,7 @@ rewrite - (opprD 1) -!(intrD _ 1%:Z) -{1} intr_N.
 rewrite floor_sum  opprD (addrCA (floorq _)) - (opprB _ y) !mulz2 addrK.
 have -> : (1 + (- (1) - y + (- (1) - y))) = (- (1 + y + y)).
   by rewrite !addrA addrN add0r - !opprD (addrC y).
-by rewrite (addrA 1 y)  opprB intr_N addKr invrN opprK invrK. 
+by rewrite (addrA 1 y) opprB intr_N addKr (invrN x) opprK invrK.
 Qed.
 
 Lemma Sn_0: Sn 0 = 1.  Proof. by []. Qed.
