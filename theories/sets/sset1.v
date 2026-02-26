@@ -5,6 +5,7 @@ Copyright INRIA (2009-2013 2018) Apics-Marelle Team (Jose Grimm).
 *)
 
 From mathcomp Require Import ssreflect ssrfun ssrbool eqtype ssrnat.
+Set SsrOldRewriteGoalsOrder.  (* change Set to Unset when porting the file, then remove the line when requiring MathComp >= 2.6 *)
 
 Set Implicit Arguments.
 Unset Strict Implicit.

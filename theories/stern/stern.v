@@ -9,6 +9,7 @@ From mathcomp Require Import ssreflect ssrfun ssrbool eqtype ssrnat.
 From mathcomp Require Import seq choice fintype order bigop ssralg.
 From mathcomp Require Import div ssrnum ssrint rat prime path binomial.
 From mathcomp Require Import tuple finset.
+Set SsrOldRewriteGoalsOrder.  (* change Set to Unset when porting the file, then remove the line when requiring MathComp >= 2.6 *)
 From gaia Require Import fibm.
 
 Set Implicit Arguments.

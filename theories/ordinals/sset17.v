@@ -5,6 +5,7 @@
 (* $Id: sset17.v,v 1.6 2018/09/04 07:58:00 grimm Exp $ *)
 
 From mathcomp Require Import ssreflect ssrfun ssrbool eqtype ssrnat.
+Set SsrOldRewriteGoalsOrder.  (* change Set to Unset when porting the file, then remove the line when requiring MathComp >= 2.6 *)
 From gaia Require Export sset15.
 
 Set Implicit Arguments.

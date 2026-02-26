@@ -6,6 +6,7 @@
 
 From Coq Require Import Setoid.
 From mathcomp Require Import ssreflect ssrfun ssrbool eqtype ssrnat.
+Set SsrOldRewriteGoalsOrder.  (* change Set to Unset when porting the file, then remove the line when requiring MathComp >= 2.6 *)
 From gaia Require Export sset1.
 
 Set Implicit Arguments.

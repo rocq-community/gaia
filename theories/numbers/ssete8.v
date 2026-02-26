@@ -6,6 +6,7 @@ $Id: ssete8.v,v 1.2 2018/07/13 12:58:25 grimm Exp $
 From mathcomp Require Import ssreflect ssrfun ssrbool eqtype.
 From mathcomp Require Import ssrnat seq choice fintype binomial.
 From mathcomp Require Import bigop ssralg poly ssrint.
+Set SsrOldRewriteGoalsOrder.  (* change Set to Unset when porting the file, then remove the line when requiring MathComp >= 2.6 *)
 From gaia Require Import ssete7.
 
 Set Implicit Arguments.

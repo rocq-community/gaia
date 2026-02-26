@@ -7,6 +7,7 @@
 From mathcomp Require Import ssreflect ssrfun ssrbool eqtype ssrnat.
 From mathcomp Require Import seq path fintype div bigop binomial.
 From mathcomp Require Import prime finset ssralg ssrnum ssrint.
+Set SsrOldRewriteGoalsOrder.  (* change Set to Unset when porting the file, then remove the line when requiring MathComp >= 2.6 *)
 
 Set Implicit Arguments.
 Unset Strict Implicit.

@@ -5,6 +5,7 @@ $Id: ssete6.v,v 1.31 2018/10/01 14:40:54 grimm Exp $
 *)
 
 From mathcomp Require Import ssreflect ssrbool ssrfun eqtype.
+Set SsrOldRewriteGoalsOrder.  (* change Set to Unset when porting the file, then remove the line when requiring MathComp >= 2.6 *)
 From gaia Require Export sset15 ssete2 ssete3 ssetq2.
 
 Set Implicit Arguments.

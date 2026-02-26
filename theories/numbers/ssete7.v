@@ -6,6 +6,7 @@ From Coq Require Import Setoid.
 From mathcomp Require Import ssreflect ssrfun ssrbool eqtype.
 From mathcomp Require Import ssrnat seq path div.
 From mathcomp Require Import fintype tuple finfun bigop finset binomial.
+Set SsrOldRewriteGoalsOrder.  (* change Set to Unset when porting the file, then remove the line when requiring MathComp >= 2.6 *)
 
 Set Implicit Arguments.
 Unset Strict Implicit.
