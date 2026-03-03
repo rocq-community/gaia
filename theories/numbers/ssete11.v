@@ -3,6 +3,7 @@
 *)
 
 From mathcomp Require Import ssreflect ssrbool eqtype ssrfun.
+Set SsrOldRewriteGoalsOrder.  (* change Set to Unset when porting the file, then remove the line when requiring MathComp >= 2.6 *)
 From gaia Require Export sset14 ssete2 ssetq1.
 
 (* $Id: ssete11.v,v 1.8 2018/09/04 07:58:00 grimm Exp $ *)
