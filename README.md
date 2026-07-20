@@ -33,15 +33,15 @@ and number theory.
   - José Grimm
   - Alban Quadrat
   - Carlos Simpson
-- Coq-community maintainer(s):
+- Rocq-community maintainer(s):
   - Laurent Théry ([**@thery**](https://github.com/thery))
 - License: [MIT License](LICENSE)
-- Compatible Coq versions: 8.16 or later
+- Compatible Rocq/Coq versions: 8.16 or later
 - Additional dependencies:
   - [MathComp ssreflect 2.0 or later](https://math-comp.github.io)
   - [Hierarchy Builder 1.6.0 or later](https://github.com/math-comp/hierarchy-builder)
   - [MathComp algebra](https://math-comp.github.io)
-- Coq namespace: `gaia`
+- Rocq/Coq namespace: `gaia`
 - Related publication(s):
   - [Implementation of Bourbaki's Elements of Mathematics in Coq: Part One, Theory of Sets](https://jfr.unibo.it/article/view/1899) doi:[10.6092/issn.1972-5787/1899](https://doi.org/10.6092/issn.1972-5787/1899)
   - [Implementation of Bourbaki's Elements of Mathematics in Coq: Part Two, From Natural Numbers to Real Numbers](https://jfr.unibo.it/article/view/4771) doi:[10.6092/issn.1972-5787/4771](https://doi.org/10.6092/issn.1972-5787/4771)
