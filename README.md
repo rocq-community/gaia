@@ -36,10 +36,10 @@ and number theory.
 - Rocq-community maintainer(s):
   - Laurent Théry ([**@thery**](https://github.com/thery))
 - License: [MIT License](LICENSE)
-- Compatible Rocq/Coq versions: 8.16 or later
+- Compatible Rocq/Coq versions: 9.0 or later
 - Additional dependencies:
-  - [MathComp ssreflect 2.0 or later](https://math-comp.github.io)
-  - [Hierarchy Builder 1.6.0 or later](https://github.com/math-comp/hierarchy-builder)
+  - [MathComp ssreflect 2.4 or later](https://math-comp.github.io)
+  - [Hierarchy Builder](https://github.com/math-comp/hierarchy-builder)
   - [MathComp algebra](https://math-comp.github.io)
 - Rocq/Coq namespace: `gaia`
 - Related publication(s):

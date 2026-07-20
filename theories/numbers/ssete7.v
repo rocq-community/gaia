@@ -2,7 +2,7 @@
 Bourbaki aux fime
 *)
 
-From Coq Require Import Setoid.
+From Stdlib Require Import Setoid.
 From mathcomp Require Import ssreflect ssrfun ssrbool eqtype.
 From mathcomp Require Import ssrnat seq path div.
 From mathcomp Require Import fintype tuple finfun bigop finset binomial.
@@ -83,11 +83,11 @@ Qed.
 (* ---- Derangements *)
 
 
-Fixpoint der_rec n :=
-   if n is n'.+1 then if n' is  n''.+1 then n' * (der_rec n'' + der_rec n')
+Fixpoint derange n :=
+   if n is n'.+1 then if n' is  n''.+1 then n' * (derange n'' + derange n')
    else 0 else 1.
 
-Definition derange n := nosimpl der_rec n.
+Arguments derange : simpl never.
 
 Lemma derange0: derange 0 = 1.  Proof. by []. Qed.
 
@@ -133,23 +133,21 @@ Section Stirling.
    elements into a set with [p] elements.  
 *)
 
-Fixpoint stirling2_rec n m :=
+Fixpoint stirling2 n m :=
   match n, m with 
-  | n'.+1, m'.+1 => m *stirling2_rec n' m + stirling2_rec n' m'
+  | n'.+1, m'.+1 => m * stirling2 n' m + stirling2 n' m'
   | 0, 0 => 1
   | 0, _.+1 => 0
   | _ .+1, 0 => 0
   end.
 
-Definition stirling2 := nosimpl stirling2_rec.
+Arguments stirling2 : simpl never.
 Definition nbsurj n m := (stirling2 n m) *  m`!. 
 
 Notation "''St' ( n , m )" := (stirling2 n m)
   (at level 8, format "''St' ( n ,  m )") : nat_scope.
 Notation "''Sj' ( n , m )" := (nbsurj n m)
   (at level 8, format "''Sj' ( n ,  m )") : nat_scope.
-
-Lemma stirE : stirling2 = stirling2_rec.  Proof. by []. Qed.
 
 Lemma stir00 : 'St(0, 0) = 1. Proof. by [].  Qed.
 Lemma nbsurj00 : 'Sj(0, 0) = 1. Proof. by [].  Qed.
@@ -234,21 +232,20 @@ Qed.
 Lemma nbsurj_SSnn n: nbsurj n.+2 n = ('C(n.+3,4) + 2 * 'C(n.+2,4)) * n`!.
 Proof. by rewrite /nbsurj stir_SSnn.  Qed.
 
-Fixpoint stirling1_rec n m :=
+Fixpoint stirling1 n m :=
   match n, m with 
-  | n'.+1, m'.+1 => n' *stirling1_rec n' m + stirling1_rec n' m'
+  | n'.+1, m'.+1 => n' *stirling1 n' m + stirling1 n' m'
   | 0, 0 => 1
   | 0, _.+1 => 0
   | _ .+1, 0 => 0
   end.
 
-Definition stirling1 := nosimpl stirling1_rec.
+Arguments stirling1 : simpl never.
 
 Notation "''So' ( n , m )" := (stirling1 n m)
   (at level 8, format "''So' ( n ,  m )") : nat_scope.
 
 
-Lemma stir1_E : stirling1 = stirling1_rec.   Proof. done. Qed.
 Lemma stir1_00 : 'So(0, 0) = 1.              Proof.  done. Qed.
 Lemma stir1_n0 n : 'So(n.+1, 0) = 0.         Proof.  done. Qed.
 Lemma stir1_0n m : 'So(0, m.+1)  = 0.        Proof.  done. Qed.
@@ -282,19 +279,18 @@ Qed.
 
 (* Euler *)
 
-Fixpoint euler_rec n m :=
+Fixpoint euler n m :=
   match n, m with 
-    | n'.+1, m'.+1 => m.+1 *euler_rec n' m + (n'-m') * euler_rec n' m'
+    | n'.+1, m'.+1 => m.+1 * euler n' m + (n'-m') * euler n' m'
     | 0, _ => 0
     |  _.+1, 0 => 1
   end.
 
-Definition euler := nosimpl euler_rec.
+Arguments euler : simpl never.
 
 Notation "''Eu' ( n , m )" := (euler n m)
   (at level 8, format "''Eu' ( n ,  m )") : nat_scope.
 
-Lemma eulerE : euler = euler_rec. Proof. by []. Qed.
 Lemma euler0m m : 'Eu(0, m) = 0. Proof. by [] . Qed.
 Lemma eulern0 n : 'Eu(n.+1, 0) = 1. Proof. by []. Qed.
 Lemma eulerS n m : 'Eu(n.+1, m.+1) = m.+2 * 'Eu(n, m.+1) + (n-m) * 'Eu(n,m).
@@ -1397,7 +1393,7 @@ Qed.
 
 Lemma pascal11 n: \sum_(i < n.+1) 'C(n, i) = 2 ^ n.
 Proof.
-by rewrite  (Pascal 1 1 n);  apply: eq_bigr => i _ //; rewrite !exp1n !muln1.
+by rewrite  (expnDn 1 1 n);  apply: eq_bigr => i _ //; rewrite !exp1n !muln1.
 Qed.
 
 Lemma F24 n: n > 0 ->
@@ -1457,7 +1453,7 @@ Qed.
 
 Lemma F7_aux n:  n ^ 3 = 6 * 'C(n, 3) +  6 * 'C(n, 2) + 'C(n, 1).
 Proof.
-elim:n => //n Hrec; rewrite - {1} addn1 Pascal 4! big_ord_recr big_ord0 /=.
+elim:n => //n Hrec; rewrite - {1} addn1 expnDn 4!big_ord_recr big_ord0 /=.
 rewrite !exp1n expn0 expn1 !muln1 add0n /subn /=  bin0 bin1 mul1n Hrec.
 rewrite (_: 'C(3, 2) = 3) // !binS !mulnDr bin0 addnA; congr (_ + 1).
 rewrite  - 5!addnA (addnC ('C(n, 1))); congr (_ + (_ + (_ + _))).
@@ -1467,7 +1463,7 @@ Qed.
 Lemma F8_aux n: 
     n ^ 4 = 24 * 'C(n, 4) + 36 * 'C(n, 3) +  14 * 'C(n, 2) + 'C(n, 1).
 Proof.
-elim:n => //n Hrec; rewrite - {1} addn1 Pascal 5! big_ord_recr big_ord0 /=.
+elim:n => //n Hrec; rewrite - {1} addn1 expnDn 5!big_ord_recr big_ord0 /=.
 rewrite !exp1n expn0 expn1 !muln1 add0n /subn /=  bin0 bin1 mul1n Hrec.
 rewrite !(binS n) 3! mulnDr bin0 addnA;congr (_ + 1).
 set a := 24 * 'C(n, 4); set b := 36 * 'C(n, 3).
@@ -1484,7 +1480,7 @@ Lemma F9_aux n:
     n ^ 5 = 120 * 'C(n, 5) +  240 * 'C(n, 4) + 150 * 'C(n, 3) + 
      30 * 'C(n, 2) + 'C(n, 1).
 Proof.
-elim:n => //n Hrec; rewrite - {1} addn1 Pascal 6! big_ord_recr big_ord0 /=.
+elim:n => //n Hrec; rewrite - {1} addn1 expnDn 6!big_ord_recr big_ord0 /=.
 rewrite !exp1n expn0 expn1 !muln1 add0n /subn /=  bin0 bin1 mul1n Hrec {Hrec}.
 set a:= 120; set b := 240; set c := 150; set d := 30.
 symmetry;rewrite 5!binS  bin0;rewrite addnA; congr (_ + 1).
@@ -3325,16 +3321,13 @@ Qed.
 *)
 
 (* number of derangements *)
-Fixpoint nder_rec n :=
+Fixpoint nder n :=
   if n is n1.+1 then
-    if n1 is n2.+1 then n1 *(nder_rec n1 + nder_rec n2)
+    if n1 is n2.+1 then n1 * (nder n1 + nder n2)
     else 0
   else 1.
 
-Definition nder := nosimpl nder_rec.
-
-Lemma nderE : nder = nder_rec.
-Proof. by []. Qed.
+Arguments nder : simpl never.
 
 Lemma nder0: nder 0 = 1.  Proof. by []. Qed.
 Lemma nder1: nder 1 = 0.  Proof. by []. Qed.

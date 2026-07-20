@@ -4,7 +4,7 @@
 
 (* $Id: sset16a.v,v 1.2 2018/07/13 05:59:59 grimm Exp $ *)
 
-From Coq Require Import BinNat.
+From Stdlib Require Import BinNat.
 From mathcomp Require Import ssreflect ssrfun ssrbool eqtype ssrnat div.
 Set SsrOldRewriteGoalsOrder.  (* change Set to Unset when porting the file, then remove the line when requiring MathComp >= 2.6 *)
 

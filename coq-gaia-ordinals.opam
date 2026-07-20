@@ -15,8 +15,9 @@ the Mathematical Components library."""
 build: ["dune" "build" "-p" name "-j" jobs]
 depends: [
   "dune" {>= "3.5"}
-  "coq" {>= "8.16"}
-  "coq-mathcomp-ssreflect" {>= "2.0"}
+  "coq-core" {>= "9.0"}
+  "coq-stdlib"
+  "rocq-mathcomp-ssreflect" {>= "2.4"}
   "coq-gaia-theory-of-sets" {= version}
   "coq-gaia-schutte" {= version}
 ]

@@ -15,9 +15,10 @@ Elements of Mathematics in Coq using the Mathematical Components library."""
 build: ["dune" "build" "-p" name "-j" jobs]
 depends: [
   "dune" {>= "3.5"}
-  "coq" {>= "8.16"}
-  "coq-mathcomp-ssreflect" {>= "2.0"}
-  "coq-mathcomp-algebra"
+  "coq-core" {>= "9.0"}
+  "coq-stdlib"
+  "rocq-mathcomp-ssreflect" {>= "2.4"}
+  "rocq-mathcomp-algebra"
   "coq-gaia-theory-of-sets" {= version}
   "coq-gaia-ordinals" {= version}
 ]
