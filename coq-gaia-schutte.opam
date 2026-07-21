@@ -15,9 +15,10 @@ following the approaches of Schütte and Ackermann."""
 build: ["dune" "build" "-p" name "-j" jobs]
 depends: [
   "dune" {>= "3.5"}
-  "coq" {>= "8.16"}
-  "coq-mathcomp-ssreflect" {>= "2.0"}
-  "coq-hierarchy-builder" {>= "1.6.0"}
+  "coq-core" {>= "9.0"}
+  "coq-stdlib"
+  "rocq-mathcomp-ssreflect" {>= "2.4"}
+  "rocq-hierarchy-builder"
 ]
 
 tags: [

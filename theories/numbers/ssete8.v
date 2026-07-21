@@ -348,7 +348,7 @@ Open Scope ring_scope.
 
 Section RingFormulas.
 
-Variable R : ringType.
+Variable R : pzRingType.
 Implicit Types (x y : R) (n: nat).
 
 
@@ -357,7 +357,7 @@ Lemma shorten_sum (f: nat -> R) (n m : nat):
   \sum_(i < m) f i = \sum_(i < n) f i.
 Proof.
 move => nm fz.
-rewrite - (big_mkord xpredT) (@big_cat_nat _ _ _ _ _ _ _ _ (leq0n n) nm) /= big_mkord.  (* FIXME: replace with (big_cat_nat (leq0n n) nm) when requiring MC >= 2.4.0 *)
+rewrite - (big_mkord xpredT) (big_cat_nat (leq0n n) nm) /= big_mkord.
 rewrite  [X in ( _ + X)]big1_seq ? Monoid.mulm1 // => i; case /andP => _.
 by rewrite mem_index_iota; apply: fz.
 Qed.
@@ -378,7 +378,7 @@ End RingFormulas.
 
 
 Section  RingPoly.
-Variable R : ringType.
+Variable R : nzRingType.
 
 Local Open Scope ring_scope.
 
@@ -509,7 +509,7 @@ End PolyFormulas.
 
 
 Section BigOps.
-Variables (R : comRingType) (idx : R) (op : Monoid.com_law idx).
+Variables (R : comPzRingType) (idx : R) (op : Monoid.com_law idx).
 
 Lemma big_ord_rev (n : nat) (P : nat -> bool) (F : nat -> R):
   \big[op/idx]_(i < n | P i) F i =

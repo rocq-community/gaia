@@ -954,16 +954,13 @@ Qed.
 
 
 (** *** Copy of the std lib   *)
-Fixpoint fib_rec n :=
+Fixpoint fib n :=
   if n is n1.+1 then
-    if n1 is n2.+1 then fib_rec n1 + fib_rec n2
+    if n1 is n2.+1 then fib n1 + fib n2
     else 1
   else 0.
 
-Definition fib := nosimpl fib_rec.
-
-Lemma fibE : fib = fib_rec.
-Proof. by []. Qed.
+Arguments fib : simpl never.
 
 Lemma fib0 : fib 0 = 0.
 Proof. by []. Qed.
@@ -1114,16 +1111,13 @@ Qed.
 
 (** lucas *)
 
-Fixpoint lucas_rec n :=
+Fixpoint lucas n :=
   if n is n1.+1 then
-    if n1 is n2.+1 then lucas_rec n1 + lucas_rec n2
+    if n1 is n2.+1 then lucas n1 + lucas n2
     else 1
-  else 2. 
+  else 2.
 
-Definition lucas := nosimpl lucas_rec.
-
-Lemma lucasE : lucas = lucas_rec.
-Proof. by []. Qed.
+Arguments lucas : simpl never.
 
 Lemma lucas0 : lucas 0 = 2.
 Proof. by []. Qed.
@@ -4021,9 +4015,7 @@ Lemma card_max_rep1m m: card_max_rep 1 m = 0.
 Proof. by rewrite/card_max_rep /= big_geq. Qed.
 
 Lemma card_max_rep2m m: card_max_rep 2 m = (m==0).
-Proof. 
-by rewrite/card_max_rep big_ltn // big_geq // fibE /= ZeckM0 addn0 eq_sym.
-Qed.
+Proof. by rewrite/card_max_rep big_ltn // big_geq // ZeckM0 addn0 eq_sym. Qed.
 
 Lemma card_max_rep41: card_max_rep 4 1 = 1.
 Proof.

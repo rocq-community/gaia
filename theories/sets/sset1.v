@@ -703,7 +703,7 @@ Proof.
 move => x y; set_extens t; case/setU2_P => ts; apply /setU2_P; fprops.
 Qed.
 
-Lemma setU2_id: idempotent union2.
+Lemma setU2_id: idempotent_op union2.
 Proof. move => x;set_extens t; [ by case /setU2_P | fprops]. Qed.
 
 Lemma setU2_A: associative union2.
@@ -1162,7 +1162,7 @@ Proof. move => x;apply: setI2_1. Qed.
 Lemma subsetI2r A B: sub (A \cap B) B.
 Proof. move => x;apply: setI2_2. Qed.
 
-Lemma setI2_id: idempotent intersection2.
+Lemma setI2_id: idempotent_op intersection2.
 Proof.  
 by move => A;set_extens t; [case/setI2_P | move=> tA; apply/setI2_P; split].
 Qed.
