@@ -1295,7 +1295,7 @@ have R3:=(ltn_pmod b ap).
 case: (posnP (b %/ a)) => qp.  
   by move: dvde (ltnW lab);rewrite qp mul0n add0n leqNgt=> ->; rewrite R3.
 set q := (b %/ a)%:Z%:Q.
-have ap':a%:Z%:Q != 0 by rewrite  intq_eq0; move: ap; case (a).
+have ap':a%:Z%:Q != 0 by rewrite pnatr_eq0; move: ap; case (a).
 have ->: a%:~R / b%:~R = 1 / (q + (b %% a)%R%:~R / a%:~R).
   by rewrite - invf_div div1r {1}dvde ratN_D mulrDl ratN_M  mulfK.
 have rq: rat_in_P q.
@@ -1308,7 +1308,7 @@ have R1: (a <= n)%N by move: (leq_trans lab lbn); rewrite ltnS.
 move: (Hrec _ _ R1 R2 R3) => [l /andP[ha hb] hc].
 exists (q :: l); rewrite ? hc //= ha rq /=.
 move: hb  hc;case: (l) => //= _ /eqP. 
-by rewrite mulf_eq0 invr_eq0 (negbTE ap') orbF intq_eq0; move: R2; case:(b%%a).
+by rewrite mulf_eq0 invr_eq0 (negbTE ap') orbF pnatr_eq0; move: R2; case:(b%%a).
 Qed.
 
 Lemma CF_exists (x: rat):  exists a l, good_for_cf a l /\ x = SCF (a::l).
@@ -2716,7 +2716,7 @@ Section FuscSum.
 Local Open Scope ring_scope.
 
 Lemma fuscq_eq0 n: ((fusc n)%:Q == 0) = (n == 0)%N.
-Proof. by rewrite intq_eq0 - (fusc_eq0 n). Qed.
+Proof. by rewrite pnatr_eq0 - (fusc_eq0 n). Qed.
 
 Lemma sum_Stern1 n:  \sum_(i<2^n) (Stern (i+2^n).*2) = (2^n)%N%:Q / 2%:Q.
 Proof.
