@@ -1,7 +1,7 @@
 ---
 fullname: Gaia
 shortname: gaia
-organization: coq-community
+organization: rocq-community
 community: true
 dune: false
 action: true
@@ -80,22 +80,30 @@ dependencies:
     [MathComp algebra](https://math-comp.github.io)
 
 tested_coq_opam_versions:
-- version: 'rocq-prover-dev'
-  repo: 'mathcomp/mathcomp-dev'
-- version: 'rocq-prover-9.2'
-  repo: 'mathcomp/mathcomp-dev'
-- version: 'rocq-prover-9.1'
-  repo: 'mathcomp/mathcomp-dev'
-- version: 'rocq-prover-9.0'
-  repo: 'mathcomp/mathcomp-dev'
-- version: '2.5.0-rocq-prover-9.1'
-  repo: 'mathcomp/mathcomp'
-- version: '2.5.0-rocq-prover-9.0'
+- version: '2.4.0-rocq-prover-9.0'
   repo: 'mathcomp/mathcomp'
 - version: '2.4.0-rocq-prover-9.1'
   repo: 'mathcomp/mathcomp'
-- version: '2.4.0-rocq-prover-9.0'
+- version: '2.5.0-rocq-prover-9.0'
   repo: 'mathcomp/mathcomp'
+- version: '2.5.0-rocq-prover-9.1'
+  repo: 'mathcomp/mathcomp'
+- version: '2.6.0-rocq-prover-9.0'
+  repo: 'mathcomp/mathcomp'
+- version: '2.6.0-rocq-prover-9.1'
+  repo: 'mathcomp/mathcomp'
+- version: '2.6.0-rocq-prover-9.2'
+  repo: 'mathcomp/mathcomp'
+- version: '2.6.0-rocq-prover-9.3'
+  repo: 'mathcomp/mathcomp'
+- version: 'rocq-prover-9.1'
+  repo: 'mathcomp/mathcomp-dev'
+- version: 'rocq-prover-9.2'
+  repo: 'mathcomp/mathcomp-dev'
+- version: 'rocq-prover-9.3'
+  repo: 'mathcomp/mathcomp-dev'
+- version: 'rocq-prover-dev'
+  repo: 'mathcomp/mathcomp-dev'
 
 namespace: gaia
 
